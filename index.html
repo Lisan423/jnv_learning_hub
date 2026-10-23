@@ -1,0 +1,408 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#081126">
+<meta name="description" content="Aura Full Class in JNV, Class VII th A — a student learning hub for Classes 6–10.">
+<title>Aura Full Class in JNV | Class VII A</title>
+<style>
+:root{
+ --bg:#081126;--panel:#111e3b;--panel2:#1a2a4c;
+ --text:#f4f7ff;--muted:#b4c1dd;--accent:#9b8aff;
+ --cyan:#49eee0;--border:#304064;
+}
+body.light{
+ --bg:#f3f6ff;--panel:#fff;--panel2:#e8edff;
+ --text:#17213d;--muted:#5c6782;--accent:#6550e8;
+ --cyan:#087e83;--border:#d8deef;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.container{width:min(1100px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+.brand{font-size:19px;font-weight:900}
+.brand span{color:var(--cyan)}
+.links{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.links a{font-size:13px;color:var(--muted)}
+.links a:hover{color:var(--cyan)}
+.btn{display:inline-block;border:0;border-radius:10px;padding:11px 15px;background:var(--accent);color:white;font-weight:700}
+.btn.alt{background:var(--panel2);color:var(--text);border:1px solid var(--border)}
+.hero{padding:45px 0 55px;background:radial-gradient(ellipse at 90% 10%,#6653b944,transparent 45%),radial-gradient(ellipse at 0 90%,#1ac6b522,transparent 40%)}
+.eyebrow{display:inline-block;border:1px solid var(--border);border-radius:25px;padding:5px 12px;color:var(--cyan);font-size:12px;letter-spacing:1.5px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.1;margin:20px 0}
+.gradient{background:linear-gradient(90deg,var(--cyan),#b5a5ff);color:transparent;background-clip:text}
+p{color:var(--muted)}
+.hero p{max-width:700px;font-size:17px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+.school-photo{width:100%;max-height:440px;object-fit:cover;border-radius:20px;border:1px solid var(--border);margin-top:25px}
+.stats,.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.stats{max-width:650px;margin-top:25px}
+.stat,.card,.member,.quote{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;min-width:0}
+.stat strong{display:block;font-size:24px;color:var(--cyan)}
+.stat small{color:var(--muted)}
+section{padding:48px 0}
+.section-head{margin-bottom:22px}
+.section-head h2{margin:0;font-size:clamp(25px,4vw,35px)}
+.section-head p{margin:6px 0}
+.card h3{margin:7px 0}
+.card p{font-size:14px}
+.icon{font-size:28px}
+.tag{display:inline-block;color:var(--cyan);background:var(--panel2);padding:4px 9px;border-radius:6px;font-size:11px;font-weight:bold}
+input,select,textarea{width:100%;padding:12px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:10px;min-width:0}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:20px 0}
+.lesson{display:flex;flex-direction:column;gap:8px}
+.lesson button{margin-top:auto}
+.group-name{overflow-wrap:anywhere;font-size:clamp(17px,3vw,23px)}
+.members{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.member strong{display:block}
+.member small{color:var(--cyan)}
+.notice{border-left:4px solid var(--cyan);padding:12px 15px;background:var(--panel);border-radius:0 10px 10px 0}
+.quiz-question{font-size:20px;font-weight:bold}
+.answers{display:grid;gap:9px;margin:18px 0}
+.answer{background:var(--panel2);color:var(--text);border:1px solid var(--border);padding:12px;text-align:left;border-radius:10px}
+.answer:disabled{opacity:.8}
+.stack{display:grid;gap:11px}
+.notes-list{display:grid;gap:10px;margin-top:15px}
+.note{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;overflow-wrap:anywhere}
+.note p{white-space:pre-wrap}
+.small{font-size:12px;color:var(--muted)}
+.quote-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.quote{padding:22px}
+.quote blockquote{margin:0;font-size:18px;font-weight:bold}
+.quote p{margin-bottom:0;font-size:12px}
+footer{text-align:center;padding:30px 0;border-top:1px solid var(--border)}
+footer strong{color:var(--cyan)}
+.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.members{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){nav{justify-content:center}.brand{width:100%;text-align:center}.links{justify-content:center;gap:10px}.links a{font-size:12px}.grid,.quote-list{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:19px}section{padding:35px 0}}
+</style>
+</head>
+<body>
+<header>
+ <div class="container">
+  <nav>
+   <a class="brand" href="#home">AURA <span>JNV</span></a>
+   <div class="links">
+    <a href="#home">Home</a><a href="#classes">Classes</a>
+    <a href="#lessons">Lessons</a><a href="#community">Community</a>
+    <a href="#quiz">Quiz</a><a href="#notes">Notes</a><a href="#quotes">Quotes</a>
+    <button class="btn alt" id="themeBtn" type="button">🌙 Theme</button>
+   </div>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container">
+  <span class="eyebrow">LEARN · EXPLORE · ACHIEVE</span>
+  <h1>Aura Full Class in JNV<br><span class="gradient">Class VII th A</span></h1>
+  <p>A learning hub for curious students. Explore subjects, practise questions, save your notes and build your knowledge every day.</p>
+  <div class="actions">
+   <a class="btn" href="#classes">📚 Explore Classes</a>
+   <a class="btn alt" href="#quiz">🧠 Take a Quiz</a>
+  </div>
+  <img class="school-photo" src="school.jpg" alt="Our school campus" onerror="this.style.display='none';document.getElementById('photoHelp').classList.remove('hidden')">
+  <p id="photoHelp" class="notice hidden">School photo not found. Upload your school image to the repository and name it school.jpg.</p>
+  <div class="stats">
+   <div class="stat"><strong>6–10</strong><small>Classes</small></div>
+   <div class="stat"><strong>5+</strong><small>Subject areas</small></div>
+   <div class="stat"><strong>11</strong><small>Group members</small></div>
+  </div>
+ </div>
+</section>
+
+<section id="classes">
+ <div class="container">
+  <div class="section-head"><h2>Explore Your Classes 🎓</h2><p>Choose a class to filter the learning library.</p></div>
+  <div class="grid">
+   <article class="card"><div class="icon">🌱</div><span class="tag">CLASS 6</span><h3>Foundation Explorer</h3><p>Build foundations in maths, science, English and social science.</p><button class="btn alt classBtn" data-class="6">Explore Class 6</button></article>
+   <article class="card"><div class="icon">🚀</div><span class="tag">CLASS 7</span><h3>Young Achievers</h3><p>Strengthen your basics and practise new concepts.</p><button class="btn alt classBtn" data-class="7">Explore Class 7</button></article>
+   <article class="card"><div class="icon">🔬</div><span class="tag">CLASS 8</span><h3>Knowledge Builders</h3><p>Discover scientific ideas and mathematical reasoning.</p><button class="btn alt classBtn" data-class="8">Explore Class 8</button></article>
+   <article class="card"><div class="icon">🧪</div><span class="tag">CLASS 9</span><h3>Science & Discovery</h3><p>Study concepts and practise school topics.</p><button class="btn alt classBtn" data-class="9">Explore Class 9</button></article>
+   <article class="card"><div class="icon">🏆</div><span class="tag">CLASS 10</span><h3>Exam Preparation</h3><p>Revise concepts and organise your exam preparation.</p><button class="btn alt classBtn" data-class="10">Explore Class 10</button></article>
+   <article class="card"><div class="icon">🌍</div><span class="tag">ALL CLASSES</span><h3>Learning Resources</h3><p>Search topics, take quizzes and save your own notes.</p><a class="btn alt" href="#lessons">Open Library</a></article>
+  </div>
+ </div>
+</section>
+
+<section id="lessons">
+ <div class="container">
+  <div class="section-head"><h2>Learning Library 📖</h2><p>Search sample topics by class and subject.</p></div>
+  <div class="filters">
+   <input id="search" type="search" placeholder="Search topics..." aria-label="Search topics">
+   <select id="classFilter" aria-label="Filter class"><option value="all">All Classes</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+   <select id="subjectFilter" aria-label="Filter subject"><option value="all">All Subjects</option><option>Mathematics</option><option>Science</option><option>English</option><option>Social Science</option><option>Computer</option></select>
+  </div>
+  <div class="grid" id="lessonGrid"></div>
+  <p id="noResults" class="notice hidden">No topics found. Try another search.</p>
+  <p class="small">These are sample topics, not a complete official JNV syllabus.</p>
+ </div>
+</section>
+
+<section id="community">
+ <div class="container">
+  <div class="section-head"><h2>Our Class VII A Community 🤝</h2><p>Our class, our friendship, our memories.</p></div>
+  <article class="card">
+   <span class="tag">WHATSAPP GROUP NAME</span>
+   <h3 class="group-name" id="groupName">The monster is jujutsu kaisen ⚠️ ⚠️ ‼️‼️‼️❗❗❗❗🤟🤟🤟🤟🤟🤟☠️☠️☠️☠️☠️☠️☠️😎😎😎😎🤝🤝🥵🥵🚨🚨🚨🚨🚧🚧❌❌⚠️⚠️⚠️⚠️⚠️☢️☢️☢️☢️🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳🇮🇳</h3>
+   <button class="btn alt" id="copyGroup" type="button">📋 Copy Group Name</button>
+   <p id="copyStatus" class="small" aria-live="polite"></p>
+  </article>
+  <h3>Meet the 11 Members</h3>
+  <div class="members">
+   <div class="member"><strong>👑 Lisan</strong><small>Cyber Phantom</small></div>
+   <div class="member"><strong>🔥 Joydeep</strong><small>Shadow Phoenix</small></div>
+   <div class="member"><strong>🌀 Abhra</strong><small>Vortex Mystic</small></div>
+   <div class="member"><strong>⚡ Mehedi</strong><small>Hyper Maverick</small></div>
+   <div class="member"><strong>🌙 Asim</strong><small>Lunar Knight</small></div>
+   <div class="member"><strong>🌩️ Suman</strong><small>Crimson Storm</small></div>
+   <div class="member"><strong>❄️ Mrinmay</strong><small>Frost Omega</small></div>
+   <div class="member"><strong>🐍 Akmal</strong><small>Silent Viper</small></div>
+   <div class="member"><strong>🔥 Kush</strong><small>Blaze Horizon</small></div>
+   <div class="member"><strong>✨ Nirnay</strong><small>Zenith Rogue</small></div>
+   <div class="member"><strong>🛡️ Bishwajit</strong><small>Iron Alpha</small></div>
+  </div>
+  <p class="notice">This section displays group details only. It does not connect to WhatsApp. Share a real invitation link separately if needed.</p>
+ </div>
+</section>
+
+<section id="quiz">
+ <div class="container">
+  <div class="section-head"><h2>Quick Knowledge Quiz 🧠</h2><p>Choose an answer to test yourself.</p></div>
+  <div class="card" style="max-width:720px">
+   <span class="tag" id="progress">QUESTION 1</span>
+   <div class="quiz-question" id="question"></div>
+   <div class="answers" id="answers"></div>
+   <p id="feedback" aria-live="polite"></p>
+   <button class="btn" id="next" type="button" disabled>Next Question →</button>
+   <button class="btn alt hidden" id="restart" type="button">Try Again ↻</button>
+  </div>
+ </div>
+</section>
+
+<section id="notes">
+ <div class="container">
+  <div class="section-head"><h2>My Study Notes ✍️</h2><p>Notes are stored locally in this browser on this device.</p></div>
+  <div class="grid">
+   <div class="card">
+    <form id="noteForm" class="stack">
+     <label for="noteTitle">Note title</label><input id="noteTitle" maxlength="100" required placeholder="e.g. Science Chapter 1">
+     <label for="noteClass">Class</label><select id="noteClass"><option>6</option><option selected>7</option><option>8</option><option>9</option><option>10</option></select>
+     <label for="noteText">Your notes</label><textarea id="noteText" maxlength="10000" required placeholder="Write your notes here..."></textarea>
+     <button class="btn" type="submit">Save Note</button>
+    </form>
+    <p class="small">Notes are not uploaded to a server and will not automatically sync to another device.</p>
+   </div>
+   <div class="card"><h3>📒 Saved Notes</h3><div id="notesList" class="notes-list"></div><button class="btn alt hidden" id="clearNotes" type="button">Delete All Notes</button></div>
+  </div>
+ </div>
+</section>
+
+<section id="resources">
+ <div class="container">
+  <div class="section-head"><h2>Useful Learning Resources 🔗</h2></div>
+  <div class="grid">
+   <article class="card"><div class="icon">🏫</div><h3>Navodaya Vidyalaya Samiti</h3><p>Official institutional information.</p><a class="btn alt" href="https://navodaya.gov.in/" target="_blank" rel="noopener noreferrer">Official Website ↗</a></article>
+   <article class="card"><div class="icon">📚</div><h3>NCERT</h3><p>Explore educational materials and textbooks.</p><a class="btn alt" href="https://ncert.nic.in/" target="_blank" rel="noopener noreferrer">NCERT Website ↗</a></article>
+   <article class="card"><div class="icon">💻</div><h3>Web Development</h3><p>Learn HTML, CSS and JavaScript.</p><a class="btn alt" href="https://developer.mozilla.org/en-US/docs/Learn_web_development" target="_blank" rel="noopener noreferrer">Start Learning ↗</a></article>
+  </div>
+ </div>
+</section>
+
+<section id="quotes">
+ <div class="container">
+  <div class="section-head"><h2>Words to Inspire Us ✨</h2><p>Our five quotes for learning, friendship and success.</p></div>
+  <div class="quote-list">
+   <article class="quote"><span class="icon">🌟</span><blockquote>“Dream Big, Learn More, Achieve Greatness.”</blockquote><p>— Dream Big</p></article>
+   <article class="quote"><span class="icon">🎓</span><blockquote>“A School of Dreams, A Future of Possibilities.”</blockquote><p>— School Spirit</p></article>
+   <article class="quote"><span class="icon">🚀</span><blockquote>“Today’s Learners, Tomorrow’s Leaders.”</blockquote><p>— Future Leaders</p></article>
+   <article class="quote"><span class="icon">🤝</span><blockquote>“One Class, One Team, One Dream — Class VII A!”</blockquote><p>— Class Unity</p></article>
+   <article class="quote"><span class="icon">👑</span><blockquote>“Knowledge Is Our Power, Unity Is Our Strength, Success Is Our Destiny.”</blockquote><p>— Aura JNV Special</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container">
+  <div class="section-head"><h2>About This Website 🌍</h2></div>
+  <div class="card">
+   <p>Aura Full Class in JNV is an independent student learning project for organising sample topics, practising general knowledge and saving personal notes.</p>
+   <p class="small">This is not an official Navodaya Vidyalaya Samiti website. Follow your teachers and your school's official syllabus.</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <p><strong>Aura Full Class in JNV — Class VII th A</strong></p>
+  <p>Learn something new every day. Keep exploring! 🚀</p>
+  <p>Made by <strong>Lisan Sarkar</strong> 💙</p>
+  <p class="small">© <span id="year"></span> Aura JNV Learning Hub</p>
+ </div>
+</footer>
+
+<script>
+"use strict";
+
+/* Learning library */
+const lessons=[
+[6,"Mathematics","Whole Numbers","Number operations and properties.","🔢"],
+[6,"Science","Food and Nutrition","Nutrients, food sources and balanced diets.","🥗"],
+[6,"English","Grammar Basics","Nouns, verbs, sentences and punctuation.","✍️"],
+[6,"Social Science","Our Earth","Maps, directions and our planet.","🌍"],
+[6,"Computer","Computer Fundamentals","Computer parts and basic digital skills.","💻"],
+[7,"Mathematics","Fractions and Decimals","Fractions, decimals and calculations.","➗"],
+[7,"Science","Nutrition in Plants","How plants make and obtain food.","🌿"],
+[7,"English","Parts of Speech","Nouns, pronouns, adjectives and verbs.","📖"],
+[7,"Social Science","Medieval History","Societies, rulers and historical sources.","🏰"],
+[7,"Computer","Introduction to HTML","How HTML structures a web page.","🌐"],
+[8,"Mathematics","Linear Equations","Solve simple equations step by step.","📐"],
+[8,"Science","Force and Pressure","Forces, pressure and everyday examples.","🧲"],
+[8,"English","Writing Skills","Paragraphs, letters and clear writing.","📝"],
+[8,"Social Science","The Constitution","Basics of the Indian Constitution.","⚖️"],
+[8,"Computer","Web Design Basics","HTML, CSS and website layouts.","🖥️"],
+[9,"Mathematics","Polynomials","Polynomial expressions and operations.","📊"],
+[9,"Science","The Cell","Cells as basic units of living organisms.","🔬"],
+[9,"English","Reading Comprehension","Reading, inference and vocabulary.","📚"],
+[9,"Social Science","Democracy","Democracy and citizenship.","🗳️"],
+[9,"Computer","Internet Safety","Privacy and safe browsing.","🔐"],
+[10,"Mathematics","Quadratic Equations","Quadratic equations and solutions.","📈"],
+[10,"Science","Chemical Reactions","Chemical changes and reaction types.","⚗️"],
+[10,"English","Exam Writing Practice","Organise answers clearly.","🖊️"],
+[10,"Social Science","Resources and Development","Resources and sustainable development.","🌱"],
+[10,"Computer","HTML, CSS and JavaScript","Structure, style and interactivity on websites.","👨‍💻"]
+];
+
+const $=id=>document.getElementById(id);
+const grid=$("lessonGrid");
+
+function renderLessons(){
+ const q=$("search").value.trim().toLowerCase();
+ const c=$("classFilter").value;
+ const s=$("subjectFilter").value;
+ grid.replaceChildren();
+ lessons.filter(x=>(c==="all"||String(x[0])===c)&&(s==="all"||x[1]===s)&&x.join(" ").toLowerCase().includes(q))
+ .forEach(x=>{
+  const card=document.createElement("article");card.className="card lesson";
+  const icon=document.createElement("div");icon.className="icon";icon.textContent=x[4];
+  const tag=document.createElement("span");tag.className="tag";tag.textContent="CLASS "+x[0]+" · "+x[1].toUpperCase();
+  const title=document.createElement("h3");title.textContent=x[2];
+  const desc=document.createElement("p");desc.textContent=x[3];
+  const btn=document.createElement("button");btn.className="btn alt";btn.type="button";btn.textContent="Add to My Notes";
+  btn.onclick=()=>{
+   $("noteTitle").value=x[2];$("noteClass").value=String(x[0]);
+   $("noteText").value=x[1]+": "+x[2]+"\n\nMy notes:\n";
+   $("notes").scrollIntoView({behavior:"smooth"});
+   $("noteText").focus();
+  };
+  card.append(icon,tag,title,desc,btn);grid.append(card);
+ });
+ $("noResults").classList.toggle("hidden",grid.children.length!==0);
+}
+["search","classFilter","subjectFilter"].forEach(id=>$(id).addEventListener(id==="search"?"input":"change",renderLessons));
+document.querySelectorAll(".classBtn").forEach(b=>b.onclick=()=>{
+ $("classFilter").value=b.dataset.class;renderLessons();$("lessons").scrollIntoView({behavior:"smooth"});
+});
+
+/* Theme */
+try{if(localStorage.getItem("aura-theme")==="light")document.body.classList.add("light")}catch(e){}
+function updateTheme(){$("themeBtn").textContent=document.body.classList.contains("light")?"🌙 Dark":"☀️ Light"}
+updateTheme();
+$("themeBtn").onclick=()=>{
+ document.body.classList.toggle("light");
+ try{localStorage.setItem("aura-theme",document.body.classList.contains("light")?"light":"dark")}catch(e){}
+ updateTheme();
+};
+
+/* Copy group name */
+$("copyGroup").onclick=async()=>{
+ const text=$("groupName").textContent;
+ try{await navigator.clipboard.writeText(text);$("copyStatus").textContent="Group name copied!"}
+ catch(e){
+  const area=document.createElement("textarea");area.value=text;document.body.append(area);area.select();
+  let ok=false;try{ok=document.execCommand("copy")}catch(err){}
+  area.remove();$("copyStatus").textContent=ok?"Group name copied!":"Please select and copy the group name manually.";
+ }
+};
+
+/* Quiz */
+const questions=[
+ {q:"Which planet is called the Red Planet?",a:["Venus","Mars","Jupiter","Mercury"],n:1,why:"Mars looks reddish because of iron-rich dust."},
+ {q:"What is 7 × 8?",a:["54","48","56","64"],n:2,why:"7 multiplied by 8 equals 56."},
+ {q:"Which gas do plants absorb during photosynthesis?",a:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],n:2,why:"Plants use carbon dioxide to make sugars during photosynthesis."},
+ {q:"What is the capital of India?",a:["Mumbai","New Delhi","Kolkata","Chennai"],n:1,why:"New Delhi is India's capital."},
+ {q:"Which language structures a web page?",a:["HTML","PNG","SQL only","MP3"],n:0,why:"HTML structures the content of web pages."},
+ {q:"How many sides does a triangle have?",a:["Two","Three","Four","Five"],n:1,why:"A triangle has three sides."},
+ {q:"Which organ pumps blood around the body?",a:["Lungs","Brain","Heart","Stomach"],n:2,why:"The heart pumps blood through the circulatory system."}
+];
+let qi=0,score=0,answered=false;
+function showQuestion(){
+ answered=false;const x=questions[qi];$("progress").textContent="QUESTION "+(qi+1)+" OF "+questions.length;
+ $("question").textContent=x.q;$("feedback").textContent="";$("answers").replaceChildren();
+ $("next").disabled=true;$("next").classList.remove("hidden");$("restart").classList.add("hidden");
+ $("next").textContent=qi===questions.length-1?"See My Score →":"Next Question →";
+ x.a.forEach((answer,i)=>{
+  const b=document.createElement("button");b.className="answer";b.type="button";b.textContent=String.fromCharCode(65+i)+". "+answer;
+  b.onclick=()=>{
+   if(answered)return;answered=true;
+   $("answers").querySelectorAll("button").forEach(btn=>btn.disabled=true);
+   if(i===x.n){score++;$("feedback").textContent="✅ Correct! "+x.why}
+   else $("feedback").textContent="📘 Correct answer: "+x.a[x.n]+". "+x.why;
+   $("next").disabled=false;
+  };$("answers").append(b);
+ });
+}
+$("next").onclick=()=>{
+ if(!answered)return;
+ if(qi<questions.length-1){qi++;showQuestion()}
+ else{
+  $("progress").textContent="QUIZ COMPLETED";$("question").textContent="Your score: "+score+" / "+questions.length;
+  $("answers").replaceChildren();$("feedback").textContent=score===questions.length?"Excellent! Perfect score! 🎉":"Good effort! Try again to improve your score. 💪";
+  $("next").classList.add("hidden");$("restart").classList.remove("hidden");
+ }
+};
+$("restart").onclick=()=>{qi=0;score=0;showQuestion()};
+
+/* Personal notes stored on this browser */
+const KEY="aura-jnv-notes-v1";
+function readNotes(){try{const x=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(x)?x:[]}catch(e){return[]}}
+function saveNotes(n){try{localStorage.setItem(KEY,JSON.stringify(n));return true}catch(e){alert("Unable to save notes. Browser storage may be unavailable.");return false}}
+function renderNotes(){
+ const list=$("notesList");list.replaceChildren();const notes=readNotes();
+ $("clearNotes").classList.toggle("hidden",notes.length===0);
+ if(!notes.length){const p=document.createElement("p");p.className="small";p.textContent="No notes saved yet.";list.append(p);return}
+ notes.slice().reverse().forEach(n=>{
+  const box=document.createElement("article");box.className="note";
+  const title=document.createElement("strong");title.textContent=n.title+" · Class "+n.cls;
+  const p=document.createElement("p");p.textContent=n.text;
+  const date=document.createElement("small");date.className="small";date.textContent=n.date;
+  const del=document.createElement("button");del.className="btn alt";del.type="button";del.textContent="Delete";
+  del.onclick=()=>{if(saveNotes(readNotes().filter(x=>x.id!==n.id)))renderNotes()};
+  box.append(title,p,date,document.createElement("br"),del);list.append(box);
+ });
+}
+$("noteForm").onsubmit=e=>{
+ e.preventDefault();
+ const title=$("noteTitle").value.trim(),text=$("noteText").value.trim(),cls=$("noteClass").value;
+ if(!title||!text)return;
+ const notes=readNotes();notes.push({id:Date.now().toString()+"-"+Math.random().toString(36).slice(2),title,text,cls,date:new Date().toLocaleString()});
+ if(saveNotes(notes)){ $("noteForm").reset();$("noteClass").value="7";renderNotes() }
+};
+$("clearNotes").onclick=()=>{if(confirm("Delete all saved notes on this browser?")){if(saveNotes([]))renderNotes()}};
+
+$("year").textContent=new Date().getFullYear();
+renderLessons();showQuestion();renderNotes();
+</script>
+</body>
+</html>
